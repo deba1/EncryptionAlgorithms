@@ -1,0 +1,6 @@
+E:\Projects\C#\Encryption\Encryption\bin\Debug\Encryption.exe.config
+E:\Projects\C#\Encryption\Encryption\bin\Debug\Encryption.exe
+E:\Projects\C#\Encryption\Encryption\bin\Debug\Encryption.pdb
+E:\Projects\C#\Encryption\Encryption\obj\Debug\Encryption.csprojResolveAssemblyReference.cache
+E:\Projects\C#\Encryption\Encryption\obj\Debug\Encryption.exe
+E:\Projects\C#\Encryption\Encryption\obj\Debug\Encryption.pdb
