@@ -10,59 +10,21 @@ namespace Encryption
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter an Option:\n\t1. Hill Cipher\n\t2. RSA\n\t~. Exit");
-            switch (Console.ReadLine())
-            {
-                case "1":
-
-                    HillCipher hs = new HillCipher();
-                    Console.WriteLine("Enter Key (2x2 Matrix):");
-                    hs.SetKey(Int32.Parse(Console.ReadLine()), Int32.Parse(Console.ReadLine()), Int32.Parse(Console.ReadLine()), Int32.Parse(Console.ReadLine()));
-                    Console.WriteLine("Enter an Option:\n\t1. Encrypt\n\t2. Decrypt\n\t~. Exit");
-
-                    switch (Console.ReadLine())
-                    {
-                        case "1":
-                            Console.WriteLine("Enter Plain Text:");
-                            Console.WriteLine("Cipher Text:\n"+hs.Encrypt(Console.ReadLine()));
-                            break;
-                        case "2":
-                            Console.WriteLine("Enter Cipher Text:");
-                            Console.WriteLine("Plain Text:\n"+hs.Decrypt(Console.ReadLine()));
-                            break;
-                        default:
-                            System.Environment.Exit(1);
-                            break;
-                    }
-                    break;
-                case "2":
-                    int p, q, e;
-                    Console.WriteLine("Enter Values of p, q and e:");
-                    p = Int32.Parse(Console.ReadLine());
-                    q = Int32.Parse(Console.ReadLine());
-                    e = Int32.Parse(Console.ReadLine());
-                    RSA rsa = new RSA(p,q,e);
-                    Console.WriteLine("Enter an Option:\n\t1. Encrypt\n\t2. Decrypt\n\t~. Exit");
-
-                    switch (Console.ReadLine())
-                    {
-                        case "1":
-                            Console.WriteLine("Enter Plain Text(int):");
-                            Console.WriteLine("Cipher Text:\n" + rsa.Encrypt(Int32.Parse(Console.ReadLine())));
-                            break;
-                        case "2":
-                            Console.WriteLine("Enter Cipher Text(int):");
-                            Console.WriteLine("Plain Text:\n" + rsa.Decrypt(Int32.Parse(Console.ReadLine())));
-                            break;
-                        default:
-                            System.Environment.Exit(1);
-                            break;
-                    }
-                    break;
-                default:
-                    System.Environment.Exit(1);
-                    break;
-            }
+            int p, a, x, k, m;
+            Console.WriteLine("Enter Values of p, a, x and k:");
+            p = Int32.Parse(Console.ReadLine());
+            a = Int32.Parse(Console.ReadLine());
+            x = Int32.Parse(Console.ReadLine());
+            k = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Message:");
+            m = Int32.Parse(Console.ReadLine());
+            var el = new Elgamel();
+            el.SetAttr(p, a, x, k);
+            el.M = m;
+            
+            el.KeyGen();
+            el.Sign();
+            Console.WriteLine("Verification: " + (el.Verify() ? "Success" : "Failed"));
         }
     }
 }
